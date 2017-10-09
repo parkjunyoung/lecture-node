@@ -1,0 +1,32 @@
+<% include ../header.ejs %>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>제목</th>
+            <th>작성일</th>
+            <th>삭제</th>
+        </tr>
+        <% products.forEach(function(product){ 
+            var date = new Date(product.createdAt);
+        %>
+        <tr>
+            <td>
+                <a href="/admin/products/detail/<%=product.id%>">
+                    <%=product.product_name%>
+                </a>
+            </td>
+            <td>
+                <%=date.getFullYear()%> -
+                <%=date.getMonth()+1%> -
+                <%=date.getDate()%>
+            </td>
+            <td>
+                <a href="/admin/products/delete/<%=product.id%>" 
+                class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?')">삭제</a>
+            </td>
+        </tr>
+        <%});%>
+    </table>
+
+    <a href="/admin/products/write" class="btn btn-default">작성하기</a>
+
+<% include ../footer.ejs %>
