@@ -14,6 +14,7 @@ var session = require('express-session');
 
 var admin = require('./routes/admin.js');
 var accounts = require('./routes/accounts');
+var auth = require('./routes/auth');
 
 var db = require('./models');
 
@@ -67,6 +68,7 @@ app.use(flash());
 // Routing
 app.use('/admin' , admin );
 app.use('/accounts' , accounts);
+app.use('/auth', auth);
 
 app.get('/', function(req,res){
     res.send('first app');
