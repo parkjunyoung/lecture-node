@@ -15,6 +15,7 @@ var session = require('express-session');
 var admin = require('./routes/admin.js');
 var accounts = require('./routes/accounts');
 var auth = require('./routes/auth');
+var home = require('./routes/home');
 
 var db = require('./models');
 
@@ -77,10 +78,9 @@ app.use(function(req, res, next) {
 app.use('/admin' , admin );
 app.use('/accounts' , accounts);
 app.use('/auth', auth);
+app.use('/', home);
 
-app.get('/', function(req,res){
-    res.send('first app');
-});
+
 
 app.listen( port, function(){
     console.log('Express listening on port', port);

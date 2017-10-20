@@ -54,7 +54,7 @@ router.get('/facebook',
 router.get('/facebook/callback',
    passport.authenticate('facebook', 
        { 
-           successRedirect: '/auth/facebook/success',
+           successRedirect: '/',
            failureRedirect: '/auth/facebook/fail' 
        }
    )
