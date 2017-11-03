@@ -17,6 +17,8 @@ var accounts = require('./routes/accounts');
 var auth = require('./routes/auth');
 var home = require('./routes/home');
 var chat = require('./routes/chat');
+var products = require('./routes/products');
+var cart = require('./routes/cart');
 
 var db = require('./models');
 
@@ -49,6 +51,9 @@ app.use(cookieParser());
 
 //업로드 path 추가
 app.use('/uploads', express.static('uploads'));
+
+//static path 추가
+app.use('/static', express.static('static'));
 
 
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -87,6 +92,8 @@ app.use('/admin' , admin );
 app.use('/accounts' , accounts);
 app.use('/auth', auth);
 app.use('/chat', chat);
+app.use('/products', products);
+app.use('/cart', cart);
 app.use('/', home);
 
 
