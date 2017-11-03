@@ -100,4 +100,8 @@ router.get('/products/delete/:id', function(req, res){
     });
 });
 
+router.post('/products/ajax_summernote', loginRequired, upload.single('thumbnail'), function(req,res){
+    res.send( '/uploads/' + req.file.filename);
+});
+
 module.exports = router;
