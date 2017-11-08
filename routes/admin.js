@@ -104,4 +104,14 @@ router.post('/products/ajax_summernote', loginRequired, upload.single('thumbnail
     res.send( '/uploads/' + req.file.filename);
 });
 
+router.get('/order', (req,res)=>{
+    models.Checkout.findAll({
+
+    }).then(function(orderList) {
+        res.render( 'admin/orderList' , 
+            { orderList : orderList }
+        );
+    });
+});
+
 module.exports = router;
