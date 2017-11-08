@@ -19,6 +19,7 @@ var home = require('./routes/home');
 var chat = require('./routes/chat');
 var products = require('./routes/products');
 var cart = require('./routes/cart');
+var checkout = require('./routes/checkout');
 
 var db = require('./models');
 
@@ -94,6 +95,7 @@ app.use('/auth', auth);
 app.use('/chat', chat);
 app.use('/products', products);
 app.use('/cart', cart);
+app.use('/checkout', checkout);
 app.use('/', home);
 
 
