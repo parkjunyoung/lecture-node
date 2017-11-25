@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var models = require('../models');
 
 router.get('/' , function(req, res){
     
@@ -61,6 +62,18 @@ router.post('/mobile_complete', (req,res)=>{
 
 router.get('/success', function(req,res){
     res.render('checkout/success');
+});
+
+router.get('/nomember', function(req,res){
+    res.render('checkout/nomember');
+});
+
+router.get('/nomember/search', function(req,res){
+
+    models.Checkout.findAll( {where : { buyer_email : req.query.email } } ).then( function(checkoutList){
+        res.render('checkout/search', { checkoutList : checkoutList } ); 
+    });
+
 });
 
 module.exports = router;

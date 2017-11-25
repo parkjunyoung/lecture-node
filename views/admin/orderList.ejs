@@ -23,7 +23,7 @@
                 <td><%=order.paid_amount%></td>
                 <td><%=order.buyer_addr%></td>
                 <td>
-                    <% var date = new Date(product.createdAt); %>
+                    <% var date = new Date(order.createdAt); %>
                     <%=date.getFullYear()%> -
                     <%=date.getMonth()+1%> -
                     <%=date.getDate()%>
