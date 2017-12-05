@@ -146,4 +146,29 @@ router.get('/statistics', adminRequired, function(req,res){
 
 });
 
+router.get('/order/edit/:id', adminRequired, function(req,res){
+    
+    models.Checkout.findById(req.params.id).then( function(order){
+        res.render( 'admin/orderForm' , 
+            { order : order }
+        );
+    });
+});
+
+router.post('/order/edit/:id', adminRequired, function(req,res){
+
+    models.Checkout.update(
+        {
+            status : req.body.status,
+            song_jang : req.body.song_jang
+        }, 
+        { 
+            where : { id: req.params.id } 
+        }
+    ).then(function() {
+        res.redirect('/admin/order');
+    });
+
+});
+
 module.exports = router;
